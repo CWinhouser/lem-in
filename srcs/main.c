@@ -6,20 +6,20 @@
 /*   By: ktwomey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 11:05:31 by ktwomey           #+#    #+#             */
-/*   Updated: 2018/09/27 11:35:32 by ktwomey          ###   ########.fr       */
+/*   Updated: 2018/09/27 15:01:15 by ktwomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int	main(void)
+int		main(void)
 {
-	t_maze maze;
-	int i;
+	t_maze	maze;
+	int		i;
 
 	i = 0;
-	maze.map = (char**)malloc(sizeof(char) * 2098);
-	maze.links = (char**)malloc(2098);
+	maze.map = (char**)malloc(sizeof(char) * 2000);
+	maze.links = (char**)malloc(sizeof(char) * 2000);
 	maze = init(maze);
 	comparison(maze);
 	return (1);
@@ -27,7 +27,7 @@ int	main(void)
 
 int		ft_findchar(char c, char *str)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (str[i])

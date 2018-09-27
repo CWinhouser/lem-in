@@ -6,7 +6,7 @@
 /*   By: ktwomey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 15:37:33 by ktwomey           #+#    #+#             */
-/*   Updated: 2018/09/27 12:46:44 by ktwomey          ###   ########.fr       */
+/*   Updated: 2018/09/27 15:17:10 by ktwomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	roomerror(t_path path, t_maze maze)
 		path = pathcounter(path, test);
 		while (maze.map[maze.n])
 		{
-			room = ft_strsub(maze.map[maze.n], 0, ft_findchar(' ', maze.map[maze.n]));
+			room = ft_strsub(maze.map[maze.n], 0,
+					ft_findchar(' ', maze.map[maze.n]));
 			count[maze.i] = count[maze.i] + strtestarray(test, room);
 			maze.n++;
 		}
@@ -50,7 +51,8 @@ void	finalpath(t_path path, t_maze maze, int *count)
 	maze.i = 0;
 	while (count[maze.i])
 	{
-		first = ft_strsub(path.path[maze.i], 0, ft_findchar('-', path.path[maze.i]));
+		first = ft_strsub(path.path[maze.i], 0,
+				ft_findchar('-', path.path[maze.i]));
 		last = ft_strrchr(path.path[maze.i], '-') + 1;
 		if (count[maze.i] == path.pathcount[maze.i])
 		{
@@ -63,10 +65,7 @@ void	finalpath(t_path path, t_maze maze, int *count)
 		maze.i++;
 	}
 	if (store == 0)
-	{
-		ft_putendl("No Path");
-		exit(0);
-	}
+		printerror();
 	printpath(path, maze, store);
 }
 
@@ -120,7 +119,7 @@ void	ft_testline(char *line)
 		n = 0;
 		while (test[i][n])
 		{
-			if	(!(ft_isdigit(test[i][n])))
+			if (!(ft_isdigit(test[i][n])))
 			{
 				ft_putendl("Error");
 				exit(0);

@@ -6,13 +6,13 @@
 /*   By: ktwomey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 11:55:58 by ktwomey           #+#    #+#             */
-/*   Updated: 2018/09/27 12:34:50 by ktwomey          ###   ########.fr       */
+/*   Updated: 2018/09/27 15:03:03 by ktwomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	printpath(t_path path, t_maze maze, int	store)
+void	printpath(t_path path, t_maze maze, int store)
 {
 	int		count;
 	char	**split;

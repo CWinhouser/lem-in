@@ -6,13 +6,13 @@
 /*   By: ktwomey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 11:06:55 by ktwomey           #+#    #+#             */
-/*   Updated: 2018/09/27 11:28:51 by ktwomey          ###   ########.fr       */
+/*   Updated: 2018/09/27 15:20:28 by ktwomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_maze	ft_addline(char *line, t_maze maze)
+t_maze		ft_addline(char *line, t_maze maze)
 {
 	int		i;
 	int		error;
@@ -40,7 +40,7 @@ t_maze	ft_addline(char *line, t_maze maze)
 	return (maze);
 }
 
-t_maze	ft_read(t_maze maze)
+t_maze		ft_read(t_maze maze)
 {
 	char	*line;
 	int		ret;
@@ -59,7 +59,7 @@ t_maze	ft_read(t_maze maze)
 	return (maze);
 }
 
-t_maze	ft_start(t_maze maze)
+t_maze		ft_start(t_maze maze)
 {
 	char	*line;
 	int		ret;
@@ -88,7 +88,7 @@ t_maze	ft_start(t_maze maze)
 	return (maze);
 }
 
-t_maze	ft_end(t_maze maze)
+t_maze		ft_end(t_maze maze)
 {
 	char	*line;
 	int		ret;
