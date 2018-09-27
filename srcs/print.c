@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktwomey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/31 12:27:00 by ktwomey           #+#    #+#             */
-/*   Updated: 2018/09/26 10:23:48 by ktwomey          ###   ########.fr       */
+/*   Created: 2018/09/27 11:55:58 by ktwomey           #+#    #+#             */
+/*   Updated: 2018/09/27 12:34:50 by ktwomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lem_in.h"
 
-char	*ft_strsub(char const *str, unsigned int start, size_t len)
+void	printpath(t_path path, t_maze maze, int	store)
 {
-	char	*new;
-	size_t	i;
+	int		count;
+	char	**split;
 
-	if (!str)
-		return (NULL);
-	new = (char *)ft_strnew(len);
-	if (!new)
-		return (NULL);
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	while (i < len && str[start] != '\0')
+	split = ft_strsplit(path.path[store - 1], '-');
+	while (maze.antz != 0)
 	{
-		*(new + i) = *(str + start);
-		start++;
-		i++;
+		count = 0;
+		while (count != path.pathcount[store - 1])
+		{
+			ft_putchar('L');
+			ft_putnbr(maze.antz);
+			ft_putchar('-');
+			ft_putstr(split[count]);
+			ft_putchar('\n');
+			count++;
+		}
+		maze.antz--;
 	}
-	return (new);
 }

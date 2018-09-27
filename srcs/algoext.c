@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   algoext.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktwomey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/31 12:27:00 by ktwomey           #+#    #+#             */
-/*   Updated: 2018/09/26 10:23:48 by ktwomey          ###   ########.fr       */
+/*   Created: 2018/09/26 14:42:47 by ktwomey           #+#    #+#             */
+/*   Updated: 2018/09/26 15:01:39 by ktwomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lem_in.h"
 
-char	*ft_strsub(char const *str, unsigned int start, size_t len)
+t_path	fill(t_path path, char *next, int end)
 {
-	char	*new;
-	size_t	i;
-
-	if (!str)
-		return (NULL);
-	new = (char *)ft_strnew(len);
-	if (!new)
-		return (NULL);
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	while (i < len && str[start] != '\0')
-	{
-		*(new + i) = *(str + start);
-		start++;
-		i++;
-	}
-	return (new);
+	path.path[end] = ft_strcat(path.path[end], "-");
+	path.path[end] = ft_strjoin(path.path[end], next);
+	return (path);
 }

@@ -6,7 +6,7 @@
 /*   By: ktwomey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 11:06:55 by ktwomey           #+#    #+#             */
-/*   Updated: 2018/09/20 15:00:09 by ktwomey          ###   ########.fr       */
+/*   Updated: 2018/09/27 11:28:51 by ktwomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,27 @@
 t_maze	ft_addline(char *line, t_maze maze)
 {
 	int		i;
+	int		error;
 
+	error = 0;
 	if (!(ft_findchar(' ', line)))
 		return (maze);
 	i = 0;
+	while (line[i])
+	{
+		if (line[i] == ' ')
+			error++;
+		i++;
+	}
+	if (error != 2)
+	{
+		ft_putendl("Error");
+		exit(0);
+	}
+	i = 0;
 	while (maze.map[i])
 		i++;
+	ft_testline(line);
 	maze.map[i] = ft_strdup(line);
 	return (maze);
 }
