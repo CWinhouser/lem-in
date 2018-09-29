@@ -6,7 +6,7 @@
 #    By: ktwomey <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/31 11:26:55 by ktwomey           #+#    #+#              #
-#    Updated: 2018/09/19 12:17:17 by ktwomey          ###   ########.fr        #
+#    Updated: 2018/09/29 13:28:35 by ktwomey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ cc = gcc
 CFLAGS = -Wall -Werror -Wextra -c 
 FUNCS = ft_atoi \
 ft_bzero \
+ft_strjoin_free \
 ft_intlen \
 ft_isalnum \
 ft_isalpha \

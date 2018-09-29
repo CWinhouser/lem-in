@@ -6,7 +6,7 @@
 /*   By: ktwomey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 11:01:43 by ktwomey           #+#    #+#             */
-/*   Updated: 2018/09/27 15:40:46 by ktwomey          ###   ########.fr       */
+/*   Updated: 2018/09/29 14:29:34 by ktwomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 typedef struct	s_maze
 {
+	char		*line;
 	int			antz;
 	char		*start;
 	char		*end;
@@ -65,6 +66,9 @@ int				strtestarray(char **test, char *room);
 t_path			pathcounter(t_path path, char **test);
 void			finalpath(t_path path, t_maze maze, int *pathcount);
 void			printpath(t_path path, t_maze maze, int store);
+void			startend(t_maze maze);
 t_path			needed(t_path path, t_maze maze, char *nexta, char *b);
+t_path			compbefore(t_maze maze, t_path path);
+char			*set(t_maze maze);
 
 #endif

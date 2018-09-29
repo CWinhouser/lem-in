@@ -6,7 +6,7 @@
 /*   By: ktwomey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 15:37:33 by ktwomey           #+#    #+#             */
-/*   Updated: 2018/09/27 15:17:10 by ktwomey          ###   ########.fr       */
+/*   Updated: 2018/09/29 14:34:40 by ktwomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	roomerror(t_path path, t_maze maze)
 {
 	char	*room;
-	char	**link;
 	char	**test;
 	int		*count;
 
@@ -34,6 +33,7 @@ void	roomerror(t_path path, t_maze maze)
 					ft_findchar(' ', maze.map[maze.n]));
 			count[maze.i] = count[maze.i] + strtestarray(test, room);
 			maze.n++;
+			free((void *)room);
 		}
 		maze.i++;
 	}
@@ -108,12 +108,11 @@ int		strtestarray(char **test, char *room)
 void	ft_testline(char *line)
 {
 	char	**test;
-	int		help;
 	int		i;
 	int		n;
 
 	i = 0;
-	test = ft_strsplit(ft_strchr(line, ' ') + 1, ' ');
+	test = ft_strsplit(ft_strchr(line, ' '), ' ');
 	while (test[i])
 	{
 		n = 0;
@@ -121,6 +120,7 @@ void	ft_testline(char *line)
 		{
 			if (!(ft_isdigit(test[i][n])))
 			{
+				free((void *)test);
 				ft_putendl("Error");
 				exit(0);
 			}
@@ -128,4 +128,5 @@ void	ft_testline(char *line)
 		}
 		i++;
 	}
+	free((void *)test);
 }

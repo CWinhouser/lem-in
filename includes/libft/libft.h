@@ -6,7 +6,7 @@
 /*   By: ktwomey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 15:02:51 by ktwomey           #+#    #+#             */
-/*   Updated: 2018/09/19 12:17:11 by ktwomey          ###   ########.fr       */
+/*   Updated: 2018/09/29 13:28:29 by ktwomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strsub(char const *str, unsigned int start, size_t len);
 char	*ft_strjoin(char const *str1, char const *str2);
+char	*ft_strjoin_free(char const *s1, char const *s2, int i);
 char	*ft_strtrim(char const *str);
 char	*ft_strnjoin(char const *str1, char const *str2, size_t n);
 size_t	ft_strlcat(char *dest, const char *src, size_t dstsize);

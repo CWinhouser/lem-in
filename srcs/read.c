@@ -6,7 +6,7 @@
 /*   By: ktwomey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 11:06:55 by ktwomey           #+#    #+#             */
-/*   Updated: 2018/09/27 15:20:28 by ktwomey          ###   ########.fr       */
+/*   Updated: 2018/09/29 14:34:35 by ktwomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ t_maze		ft_addline(char *line, t_maze maze)
 	if (!(ft_findchar(' ', line)))
 		return (maze);
 	i = 0;
-	while (line[i])
+	if (line[0] != '#')
 	{
-		if (line[i] == ' ')
-			error++;
-		i++;
-	}
-	if (error != 2)
-	{
-		ft_putendl("Error");
-		exit(0);
+		while (line[i])
+		{
+			if (line[i] == ' ')
+				error++;
+			i++;
+		}
+		if (error != 2)
+			printerror();
 	}
 	i = 0;
 	while (maze.map[i])
@@ -50,9 +50,13 @@ t_maze		ft_read(t_maze maze)
 	while (ret)
 	{
 		ret = get_next_line(0, &line);
+		ft_putendl(line);
 		maze.antz = ft_atoi(line);
 		if (ft_intlen(maze.antz) == (int)ft_strlen(line))
+		{
+			free(line);
 			return (maze);
+		}
 		free(line);
 	}
 	maze.antz = 0;
@@ -61,25 +65,25 @@ t_maze		ft_read(t_maze maze)
 
 t_maze		ft_start(t_maze maze)
 {
-	char	*line;
 	int		ret;
 	int		i;
 
 	i = 0;
-	line = NULL;
+	maze.line = NULL;
 	ret = 1;
-	while (ret)
+	while ((ret = get_next_line(0, &maze.line)))
 	{
-		ret = get_next_line(0, &line);
-		maze = ft_addline(line, maze);
-		if (ft_strcmp(line, "##start") == 0)
+		ft_putendl(maze.line);
+		maze = ft_addline(maze.line, maze);
+		if (ft_strcmp(maze.line, "##start") == 0)
 		{
-			ret = get_next_line(0, &line);
+			ret = get_next_line(0, &maze.line);
 			if (ret)
 			{
-				maze = ft_addline(line, maze);
-				i = ft_findchar(' ', line);
-				maze.start = ft_strsub(line, 0, i);
+				ft_putendl(maze.line);
+				maze = ft_addline(maze.line, maze);
+				i = ft_findchar(' ', maze.line);
+				maze.start = ft_strsub(maze.line, 0, i);
 				return (maze);
 			}
 		}
@@ -90,25 +94,25 @@ t_maze		ft_start(t_maze maze)
 
 t_maze		ft_end(t_maze maze)
 {
-	char	*line;
 	int		ret;
 	int		i;
 
 	i = 0;
 	ret = 1;
-	line = NULL;
-	while (ret)
+	maze.line = NULL;
+	while ((ret = get_next_line(0, &maze.line)))
 	{
-		ret = get_next_line(0, &line);
-		maze = ft_addline(line, maze);
-		if (ft_strcmp(line, "##end") == 0)
+		ft_putendl(maze.line);
+		maze = ft_addline(maze.line, maze);
+		if (ft_strcmp(maze.line, "##end") == 0)
 		{
-			ret = get_next_line(0, &line);
+			ret = get_next_line(0, &maze.line);
 			if (ret)
 			{
-				maze = ft_addline(line, maze);
-				i = ft_findchar(' ', line);
-				maze.end = ft_strsub(line, 0, i);
+				ft_putendl(maze.line);
+				maze = ft_addline(maze.line, maze);
+				i = ft_findchar(' ', maze.line);
+				maze.end = ft_strsub(maze.line, 0, i);
 				return (maze);
 			}
 		}
@@ -127,9 +131,11 @@ t_maze		ft_links(t_maze maze)
 	i = 0;
 	while ((ret = get_next_line(0, &line)))
 	{
+		ft_putendl(line);
 		if (ft_findchar('-', line))
 			maze.links[i++] = ft_strdup(line);
 		maze = ft_addline(line, maze);
+		free(line);
 	}
 	if (i == 0)
 		maze.links = NULL;
